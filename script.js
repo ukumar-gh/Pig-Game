@@ -30,26 +30,23 @@ btnRoll.addEventListener("click", function () {
     document.getElementById(`current--${activePlayer}`).textContent =
       currentScore;
   } else {
-    currentScore = 0;
-    document.getElementById(`current--${activePlayer}`).textContent =
-      currentScore;
-    activePlayer = activePlayer === 0 ? 1 : 0;
-    player0El.classList.toggle("player--active");
-    player1El.classList.toggle("player--active");
+    switchPlayer();
   }
-  /*
-  if (dice !== 1) {
-    currentScore += dice;
-    // alert(currentScore);
-    activePlayer === 0
-      ? (current0El.textContent = currentScore)
-      : (current1El.textContent = currentScore);
-  } else {
-    currentScore = 0;
-    activePlayer === 0
-      ? (current0El.textContent = currentScore)
-      : (current1El.textContent = currentScore);
-    activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
-  }
-  */
+});
+
+const switchPlayer = function () {
+  currentScore = 0;
+  document.getElementById(`current--${activePlayer}`).textContent =
+    currentScore;
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  player0El.classList.toggle("player--active");
+  player1El.classList.toggle("player--active");
+};
+
+btnHold.addEventListener("click", function () {
+  //   alert("here");
+  scores[activePlayer] += currentScore;
+  score0El.textContent = scores[0];
+  score1El.textContent = scores[1];
+  switchPlayer();
 });
